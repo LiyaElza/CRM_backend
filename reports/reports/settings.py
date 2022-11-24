@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'reportsapp',
     'rest_framework',
     'corsheaders',
-    'projectcrmapp'
+    'projectcrmapp',
+    'crm',
 ]
 
 MIDDLEWARE = [
