@@ -6,3 +6,5 @@ class customers(models.Model):
     LastName = models.CharField(max_length = 40)
     Email = models.CharField(max_length = 40)
     PhoneNumber = models.BigIntegerField()
+    joiningDate = models.DateField()
+
