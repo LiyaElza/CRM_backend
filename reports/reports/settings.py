@@ -85,9 +85,9 @@ WSGI_APPLICATION = 'reports.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'project_1',
+        'NAME': 'project',
         'USER':'root',
-        'PASSWORD':'Subin@123',
+        'PASSWORD':'liya@1264',
         'HOST':'localhost',
         'PORT':'3306',
     }
