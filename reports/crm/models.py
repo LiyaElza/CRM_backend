@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class customers(models.Model):
     FirstName = models.CharField(max_length = 40)
@@ -7,4 +8,5 @@ class customers(models.Model):
     Email = models.CharField(max_length = 40)
     PhoneNumber = models.BigIntegerField()
     joiningDate = models.DateField()
+
 
