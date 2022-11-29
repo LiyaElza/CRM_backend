@@ -5,18 +5,11 @@ from .serializers import customersSerializer
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.core import serializers
 from django.db import connection
-from reportsapp.models import orders,saleslist
-from reportsapp.serializers import customerOrderSerializer
-from projectcrmapp.models import productstable
 from django.forms.models import model_to_dict
 from django.core import serializers
-# from reportsapp.models import orders,saleslist
-# from projectcrmapp.models import productstable
-# from projectcrmapp.serializers import HeroSerializer
-# from reportsapp.models import saleslist
-# from reportsapp.serializers import SalesListSerializer
+
+
 
 
 @api_view(['GET'])
@@ -52,6 +45,4 @@ def getcustomerdetails(request):
     return Response(final_list)
 
 
-
-# Create your views here.
 

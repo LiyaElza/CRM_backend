@@ -21,6 +21,6 @@ urlpatterns = [
     path('api/',include('reportsapp.urls')),
     path('app/',include('projectcrmapp.urls')),
     path('apii/', include('crm.urls')),
-
+    path('api2/', include('homeapp.urls')),
 ]
 

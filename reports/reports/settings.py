@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'projectcrmapp',
     'crm',
+    'homeapp',
 ]
 
 MIDDLEWARE = [
