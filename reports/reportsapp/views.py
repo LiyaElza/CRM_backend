@@ -1,12 +1,18 @@
 from django.shortcuts import render
-from django.http import JsonResponse,HttpResponse,FileResponse
+from django.http import JsonResponse,HttpResponse,FileResponse,HttpRequest
 from .models import monthlyanalysis,productanalysis
+from crm.models import customers
+from crm.serializers import customersSerializer
 from .serializers import MonthlySalesSerializer,ProductSalesSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.core import serializers
 from io import BytesIO
-from reportlab.pdfgen import canvas;
+from datetime import date
+from .utils import html_to_pdf
+from django.views.generic import View
+from django.template.loader import render_to_string
+from django.urls import reverse
 
 
 @api_view(['GET'])
@@ -31,33 +37,63 @@ def getProductSales(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
-def generateProductReport(request):
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'filename="productreport.pdf"'
-    buffer = BytesIO()
-    reportText = canvas.Canvas(buffer)
-    productReport = productanalysis.objects.all()
-    for product in productReport:
-        reportText.drawString(400,500,product.producttype)
-        reportText.showPage()
-    reportText.save()
-    pdf = buffer.getvalue()
-    buffer.close()
-    response.write(pdf)
-    return response
+def CustomerGrowth(request):
+    data_list = customers.objects.all()
+    export_list=[]
+    data_items={}
+    for item in data_list:
+        datem = item.joiningDate.strftime("%Y")
+        if datem in data_items:
+            data_items[datem]+=1
+        else:
+            data_items[datem]=1
+    for key,item in data_items.items():
+        item={"year":key,"number":item}
+        export_list.append(item)
+    return Response(export_list)
 
-@api_view(['GET'])
-def generateMonthlyReport(request):
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'filename="customerreport.pdf"'
-    buffer = BytesIO()
-    reportText = canvas.Canvas(buffer)
-    monthReport = monthlyanalysis.objects.all()
-    for month in monthReport:
-        reportText.drawString(400,500,month.monthlist)
-        reportText.showPage()
-    reportText.save()
-    pdf = buffer.getvalue()
-    buffer.close()
-    response.write(pdf)
-    return response
+class generateCustomerReport(View):
+     def get(self, request, *args, **kwargs):
+        data_list = customers.objects.all()
+        export_list=[]
+        data_items={}
+        for item in data_list:
+            datem = item.joiningDate.strftime("%Y")
+            if datem in data_items:
+                data_items[datem]+=1
+            else:
+                data_items[datem]=1
+        for key,item in data_items.items():
+            item={"year":key,"number":item}
+            export_list.append(item)
+        open('templates/temp.html', "w").write(render_to_string('customerreport.html', {'data': export_list}))
+
+        # Converting the HTML template into a PDF file
+        pdf = html_to_pdf('temp.html')
+         
+         # rendering the template
+        return HttpResponse(pdf, content_type='application/pdf')
+
+class generateProductReport(View):
+     def get(self, request, *args, **kwargs):
+        data = productanalysis.objects.all()
+        open('templates/temp.html', "w").write(render_to_string('productreport.html', {'data': data}))
+
+        # Converting the HTML template into a PDF file
+        pdf = html_to_pdf('temp.html')
+         
+         # rendering the template
+        return HttpResponse(pdf, content_type='application/pdf')
+
+class generateMonthlyReport(View):
+     def get(self, request, *args, **kwargs):
+        data = monthlyanalysis.objects.all()
+        open('templates/temp.html', "w").write(render_to_string('monthlyreport.html', {'data': data}))
+
+        # Converting the HTML template into a PDF file
+        pdf = html_to_pdf('temp.html')
+         
+         # rendering the template
+        return HttpResponse(pdf, content_type='application/pdf')
+
+
