@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'projectcrmapp',
     'crm',
+    # 'offerapp',
 ]
 
 MIDDLEWARE = [
@@ -85,9 +86,9 @@ WSGI_APPLICATION = 'reports.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'project',
+        'NAME': 'project_1',
         'USER':'root',
-        'PASSWORD':'liya@1264',
+        'PASSWORD':'Subin@123',
         'HOST':'localhost',
         'PORT':'3306',
     }

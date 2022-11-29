@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "canvas": "^2.10.2",
+    "lab-reports": "^0.0.44"
+  }
+}

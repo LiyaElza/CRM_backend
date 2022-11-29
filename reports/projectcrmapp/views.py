@@ -23,8 +23,18 @@ def getroutes(request):
 
 
 
-@api_view(['GET'])
+@api_view(['GET','POST'])
 def getproducts(request):
-    data_list = productstable.objects.all()
-    serializer = HeroSerializer(data_list, many=True)
-    return Response(serializer.data)
+    if request.method == 'GET':
+        data_list = productstable.objects.all()
+        serializer = HeroSerializer(data_list, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = HeroSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+   
