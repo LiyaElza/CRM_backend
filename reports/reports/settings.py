@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -42,7 +42,11 @@ INSTALLED_APPS = [
     'corsheaders',
     'projectcrmapp',
     'crm',
+<<<<<<< HEAD
     'offerapp',
+=======
+    'DjangoAuthapp'
+>>>>>>> ca3c7cc31cdc4494d8fe53b64b75aa5ef516a355
 ]
 
 MIDDLEWARE = [
@@ -60,11 +64,11 @@ ALLOWED_HOSTS=['*']
 
 CORS_ORIGIN_ALLOW_ALL = True
 ROOT_URLCONF = 'reports.urls'
-
+AUTH_USER_MODEL = 'DjangoAuthapp.User'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

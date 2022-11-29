@@ -17,12 +17,16 @@ from django.contrib import admin
 from django.urls import path,include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     path('api/',include('reportsapp.urls')),
     path('app/',include('projectcrmapp.urls')),
     path('apii/', include('crm.urls')),
+<<<<<<< HEAD
     path('aoffer/', include('offerapp.urls')),
     
+=======
+    path('auth/',include('DjangoAuthapp.urls'))
+>>>>>>> ca3c7cc31cdc4494d8fe53b64b75aa5ef516a355
 
 ]
 
