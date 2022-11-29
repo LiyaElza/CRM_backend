@@ -17,11 +17,6 @@ class OrderSerializer(serializers.ModelSerializer):
         model=orders
         fields='__all__'
 
-class customerOrderSerializer(serializers.Serializer):
-    orderId=serializers.IntegerField()
-    Amount=serializers.IntegerField()
-    ProductId=serializers.IntegerField()
-    ProductName=serializers.CharField(max_length=200)
 
 class SalesListSerializer(serializers.Serializer):
     class Meta:
