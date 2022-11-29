@@ -43,8 +43,9 @@ INSTALLED_APPS = [
     'projectcrmapp',
     'crm',
     'offerapp',
-    'DjangoAuthapp'
+    'DjangoAuthapp',
     'homeapp',
+    'support'
 ]
 
 MIDDLEWARE = [
@@ -88,7 +89,7 @@ WSGI_APPLICATION = 'reports.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'crmproject',
+        'NAME': 'project',
         'USER':'root',
         'PASSWORD':'liya@1264',
         'HOST':'localhost',
