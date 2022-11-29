@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import monthlyanalysis,productanalysis,orders
+from .models import monthlyanalysis,productanalysis,orders,saleslist
 
 class MonthlySalesSerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,3 +22,9 @@ class customerOrderSerializer(serializers.Serializer):
     Amount=serializers.IntegerField()
     ProductId=serializers.IntegerField()
     ProductName=serializers.CharField(max_length=200)
+
+class SalesListSerializer(serializers.Serializer):
+    class Meta:
+        model=saleslist
+        fields='__all__'
+

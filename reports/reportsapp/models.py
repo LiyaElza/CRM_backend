@@ -25,9 +25,9 @@ class saleslist(models.Model):
     class Meta :
         unique_together = (('orderid','productid'),)
 
-# class customerOrders(models.Model):
-#     orderId=models.ForeignKey(orders,on_delete=models.CASCADE)
-#     Amount=models.IntegerField()
-#     ProductId=models.ForeignKey(productstable,on_delete=models.CASCADE)
-#     ProductName=models.CharField(max_length=200)
+class customerOrders(models.Model):
+    orderId=models.ForeignKey(orders,on_delete=models.CASCADE)
+    Amount=models.IntegerField()
+    ProductId=models.ForeignKey(productstable,on_delete=models.CASCADE)
+    ProductName=models.CharField(max_length=200)
     
