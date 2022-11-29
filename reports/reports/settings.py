@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'projectcrmapp',
     'crm',
+    'offerapp',
     'DjangoAuthapp'
 ]
 
@@ -88,7 +89,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'project',
         'USER':'root',
-        'PASSWORD':'liya@1264',
+        'PASSWORD':'Yahska@8991',
         'HOST':'localhost',
         'PORT':'3306',
     }
