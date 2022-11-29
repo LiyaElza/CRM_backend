@@ -21,12 +21,8 @@ urlpatterns = [
     path('api/',include('reportsapp.urls')),
     path('app/',include('projectcrmapp.urls')),
     path('apii/', include('crm.urls')),
-<<<<<<< HEAD
     path('aoffer/', include('offerapp.urls')),
-    
-=======
     path('auth/',include('DjangoAuthapp.urls'))
->>>>>>> ca3c7cc31cdc4494d8fe53b64b75aa5ef516a355
 
 ]
 

@@ -42,11 +42,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'projectcrmapp',
     'crm',
-<<<<<<< HEAD
     'offerapp',
-=======
     'DjangoAuthapp'
->>>>>>> ca3c7cc31cdc4494d8fe53b64b75aa5ef516a355
 ]
 
 MIDDLEWARE = [
