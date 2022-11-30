@@ -19,10 +19,8 @@ from django.db.models import Max
 @api_view(['GET'])
 def getRoutes(request):
     routes=[
-        '/api2/quantity/',
-        '/api2/income/',
-        '/api2/customerno/',
-        '/api2/totalorders/',
+        '/api2/dashboard/',
+       
         ]
     return Response(routes)
 

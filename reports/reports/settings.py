@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'projectcrmapp',
     'crm',
     'offerapp',
-    'DjangoAuthapp'
+    'DjangoAuthapp',
     'homeapp',
 ]
 
@@ -90,7 +90,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'crmproject',
         'USER':'root',
-        'PASSWORD':'liya@1264',
+        'PASSWORD':'Thisismydoor!1',
         'HOST':'localhost',
         'PORT':'3306',
     }
