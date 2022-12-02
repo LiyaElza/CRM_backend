@@ -144,6 +144,8 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'liyaelsamathew@gmail.com'
 EMAIL_HOST_PASSWORD = 'hqmqnjarrnzminnv'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_USE_SSL = False
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
