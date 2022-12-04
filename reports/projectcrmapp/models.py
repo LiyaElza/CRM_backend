@@ -12,5 +12,5 @@ class productstable(models.Model):
     kochi = models.IntegerField()
     img = models.CharField(max_length = 300)
 
-     
+    objects=models.Manager()
 

@@ -2,7 +2,8 @@ from .import views
 from django.urls import path
 urlpatterns=[
     path('/',views.getroutes,name="routes"),
-    path('products/',views.getproducts,name="products")
+    path('products/',views.getproducts,name="products"),
+    path('productsupload/',views.Import_csv,name="products"),
     # path('products/',views.getproducts,name="products"),
     # path('products/<str:pk>',views.getproducts,name="product"),
     # path('meals/',views.getmealss,name="meals"),
