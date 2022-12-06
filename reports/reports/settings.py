@@ -90,9 +90,9 @@ WSGI_APPLICATION = 'reports.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'crmproject',
+        'NAME': 'project',
         'USER':'root',
-        'PASSWORD':'Thisismydoor!1',
+        'PASSWORD':'liya@1264',
         'HOST':'localhost',
         'PORT':'3306',
     }

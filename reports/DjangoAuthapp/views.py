@@ -30,7 +30,7 @@ def login(request):
         raise AuthenticationFailed('inncorrect password')
     payload={
         'id':user.id,
-        'exp':datetime.datetime.utcnow()+datetime.timedelta(minutes=1),
+        'exp':datetime.datetime.utcnow()+datetime.timedelta(minutes=60),
         'iat':datetime.datetime.utcnow()
         }
     token=jwt.encode(payload,'secret',algorithm='HS256')
