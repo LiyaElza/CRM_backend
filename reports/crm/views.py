@@ -45,4 +45,20 @@ def getcustomerdetails(request):
     return Response(final_list)
 
 
-
+@api_view(['POST'])
+def addCustomer(request):
+        if request.method == 'POST' and request.FILES['file']:
+            fs=FileSystemStorage()
+            filename=fs.save      
+            customerexceldata = pd.read_excel(request.FILES['file'] )
+            # print(productexceldata)
+            dbframe = customerexceldata
+            for dbframe in dbframe.itertuples():
+                 
+                obj = customers.objects.create(id=dbframe.id,FirstName=dbframe.FirstName,
+                                                 LastName=dbframe.LastName, Email=dbframe.Email,PhoneNumber=dbframe.PhoneNumber,
+                                                joiningDate=dbframe.joiningDate,
+                                               )
+               
+                obj.save()
+        return Response({'message':'File Added Successfully'})

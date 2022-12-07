@@ -90,9 +90,9 @@ WSGI_APPLICATION = 'reports.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'crmproject',
+        'NAME': 'project',
         'USER':'root',
-        'PASSWORD':'Thisismydoor!1',
+        'PASSWORD':'liya@1264',
         'HOST':'localhost',
         'PORT':'3306',
     }
@@ -141,8 +141,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'liyaelsamathew@gmail.com'
-EMAIL_HOST_PASSWORD = 'hqmqnjarrnzminnv'
+EMAIL_HOST_USER = 'pycocrm@gmail.com'
+EMAIL_HOST_PASSWORD = 'wlbxoqmxwdasvtlc'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_USE_SSL = False
 
