@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse,HttpResponse,FileResponse,HttpRequest
-from .models import monthlyanalysis,productanalysis
+from .models import monthlyanalysis,productanalysis,orders
 from crm.models import customers
 from crm.serializers import customersSerializer
 from .serializers import MonthlySalesSerializer,ProductSalesSerializer
@@ -87,7 +87,7 @@ class generateProductReport(View):
 
 class generateMonthlyReport(View):
      def get(self, request, *args, **kwargs):
-        data = monthlyanalysis.objects.all()
+        data = orders.objects.all()
         open('templates/temp.html', "w").write(render_to_string('monthlyreport.html', {'data': data}))
 
         # Converting the HTML template into a PDF file
