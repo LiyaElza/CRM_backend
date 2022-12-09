@@ -15,6 +15,8 @@ from django.core import serializers
 import pandas as pd
 from django.core.files.storage import FileSystemStorage
 import os
+import jwt
+from rest_framework.exceptions import AuthenticationFailed
 
 @api_view(['GET'])
 def getroutes(request):
@@ -28,6 +30,19 @@ def getroutes(request):
 
 @api_view(['GET','POST'])
 def getproducts(request):
+    # token=request.headers['Authorization']
+
+    # if not token:
+
+    #     raise AuthenticationFailed('Unauthenticated')
+
+    # try:
+
+    #     payload=jwt.decode(token,'secret',algorithms=['HS256'])
+
+    # except jwt.ExpiredSignatureError:
+
+    #     raise AuthenticationFailed('Unauthenticated')
     data_list = productstable.objects.all()
     if request.method == 'GET':
         serializer = HeroSerializer(data_list, many=True)
@@ -37,22 +52,35 @@ def getproducts(request):
     #     if serializer.is_valid():
     #         serializer.save()
     #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['POST'])
 def Import_csv(request):
-        if request.method == 'POST' and request.FILES['file']:
-            fs=FileSystemStorage()
-            filename=fs.save      
-            productexceldata = pd.read_excel(request.FILES['file'] )
+    # token=request.headers['Authorization']
+
+    # if not token:
+
+    #     raise AuthenticationFailed('Unauthenticated')
+
+    # try:
+
+    #     payload=jwt.decode(token,'secret',algorithms=['HS256'])
+
+    # except jwt.ExpiredSignatureError:
+
+    #     raise AuthenticationFailed('Unauthenticated')
+    if request.method == 'POST' and request.FILES['file']:
+        fs=FileSystemStorage()
+        filename=fs.save      
+        productexceldata = pd.read_excel(request.FILES['file'] )
             # print(productexceldata)
-            dbframe = productexceldata
-            for dbframe in dbframe.itertuples():
+        dbframe = productexceldata
+        for dbframe in dbframe.itertuples():
                  
-                obj = productstable.objects.create(id=dbframe.id,title=dbframe.title,
+            obj = productstable.objects.create(id=dbframe.id,title=dbframe.title,
                                                  category=dbframe.category, thiruvalla=dbframe.thiruvalla, kottayam=dbframe.kottayam,
                                                 kochi=dbframe.kochi, img=dbframe.img,
                                                )
                
-                obj.save()
+            obj.save()
         return Response({'message':'File Added Successfully'})

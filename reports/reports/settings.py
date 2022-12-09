@@ -46,7 +46,9 @@ INSTALLED_APPS = [
     'DjangoAuthapp',
     'homeapp',
     'support',
-    'mailapp'
+    'mailapp',
+    'analysisapp',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [

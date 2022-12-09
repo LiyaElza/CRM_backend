@@ -9,6 +9,7 @@ urlpatterns = [
     path('auth/',include('DjangoAuthapp.urls')),
     path('api2/', include('homeapp.urls')),
     path('supportapi/', include('support.urls')),
-    path('mailapp/',include('mailapp.urls'))
+    path('mailapp/',include('mailapp.urls')),
+    path('analysis/',include('analysisapp.urls'))
 ]
 

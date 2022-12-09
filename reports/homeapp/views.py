@@ -13,6 +13,8 @@ from django.forms.models import model_to_dict
 from django.core import serializers
 from django.db.models import Sum
 from django.db.models import Max
+import jwt
+from rest_framework.exceptions import AuthenticationFailed
 
 # Create your views here.
 
@@ -26,6 +28,18 @@ def getRoutes(request):
 
 @api_view(['GET'])
 def getCounts(request):
+    # token=request.headers['Authorization']
+    # if not token:
+
+    #     raise AuthenticationFailed('Unauthenticated')
+
+    # try:
+
+    #     payload=jwt.decode(token,'secret',algorithms=['HS256'])
+
+    # except jwt.ExpiredSignatureError:
+
+    #     raise AuthenticationFailed('Unauthenticated')
     finalcount=[]
     productquantity=saleslist.objects.values('quantity')
     salescount= 0
