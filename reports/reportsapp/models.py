@@ -1,6 +1,6 @@
 from django.db import models
 from crm.models import customers
-from projectcrmapp.models import productstable
+from projectcrmapp.models import productstable,producttypetable
 # Create your models here.
 class monthlyanalysis(models.Model):
     monthlist = models.CharField(max_length = 20)
@@ -19,7 +19,7 @@ class orders(models.Model):
 class saleslist(models.Model):
     orderid=models.ForeignKey(orders,on_delete=models.CASCADE)
     productid=models.ForeignKey(productstable,on_delete=models.CASCADE)
-    producttype=models.CharField(max_length=200)
+    producttype=models.ForeignKey(producttypetable,to_field="producttype",on_delete=models.CASCADE)
     quantity=models.IntegerField()
 
     class Meta :

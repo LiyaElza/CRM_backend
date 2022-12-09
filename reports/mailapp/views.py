@@ -7,7 +7,8 @@ from .models import MailModel
 from .serializers import mailSerializer
 from crm.models import customers
 from rest_framework import status
-
+import jwt
+from rest_framework.exceptions import AuthenticationFailed
 
 # def sendemails(request):
 #     email="achuaswanth185@gmail.com"
@@ -21,6 +22,19 @@ from rest_framework import status
 
 @api_view(['POST'])
 def sendemails(request):
+    # token=request.headers['Authorization']
+
+    # if not token:
+
+    #     raise AuthenticationFailed('Unauthenticated')
+
+    # try:
+
+    #     payload=jwt.decode(token,'secret',algorithms=['HS256'])
+
+    # except jwt.ExpiredSignatureError:
+
+    #     raise AuthenticationFailed('Unauthenticated')
     subject=request.data["subject"]
     message=request.data["message"]
     email_from = settings.EMAIL_HOST_USER

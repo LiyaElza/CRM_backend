@@ -13,6 +13,8 @@ from .utils import html_to_pdf
 from django.views.generic import View
 from django.template.loader import render_to_string
 from django.urls import reverse
+import jwt
+from rest_framework.exceptions import AuthenticationFailed
 
 
 @api_view(['GET'])
@@ -26,18 +28,57 @@ def getRoutes(request):
 
 @api_view(['GET'])
 def getmonthlySales(request):
+    # token=request.headers['Authorization']
+
+    # if not token:
+
+    #     raise AuthenticationFailed('Unauthenticated')
+
+    # try:
+
+    #     payload=jwt.decode(token,'secret',algorithms=['HS256'])
+
+    # except jwt.ExpiredSignatureError:
+
+    #     raise AuthenticationFailed('Unauthenticated')
     data_list = monthlyanalysis.objects.all()
     serializer = MonthlySalesSerializer(data_list, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def getProductSales(request):
+    # token=request.headers['Authorization']
+
+    # if not token:
+
+    #     raise AuthenticationFailed('Unauthenticated')
+
+    # try:
+
+    #     payload=jwt.decode(token,'secret',algorithms=['HS256'])
+
+    # except jwt.ExpiredSignatureError:
+
+    #     raise AuthenticationFailed('Unauthenticated')
     data_list = productanalysis.objects.all()
     serializer = ProductSalesSerializer(data_list, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def CustomerGrowth(request):
+    # token=request.headers['Authorization']
+
+    # if not token:
+
+    #     raise AuthenticationFailed('Unauthenticated')
+
+    # try:
+
+    #     payload=jwt.decode(token,'secret',algorithms=['HS256'])
+
+    # except jwt.ExpiredSignatureError:
+
+    #     raise AuthenticationFailed('Unauthenticated')
     data_list = customers.objects.all()
     export_list=[]
     data_items={}
@@ -87,7 +128,7 @@ class generateProductReport(View):
 
 class generateMonthlyReport(View):
      def get(self, request, *args, **kwargs):
-        data = orders.objects.all()
+        data = monthlyanalysis.objects.all()
         open('templates/temp.html', "w").write(render_to_string('monthlyreport.html', {'data': data}))
 
         # Converting the HTML template into a PDF file
