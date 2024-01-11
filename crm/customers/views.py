@@ -24,7 +24,7 @@ def getRoutes(request):
     return Response(routes)
 
 #get details of customers
-@login_needed
+# @login_needed
 @api_view(['GET'])
 def getcustomers(request):
     data_list = customers.objects.all()
@@ -70,22 +70,16 @@ def addCustomer(request):
 @api_view(['GET'])
 
 def plusCustomers(request):
-
     selcustomers=customers.objects.all()
-
     finallist=[]
-
     for item in selcustomers:
-
         customerorderamount=orders.objects.filter(customerid=item.id)
         frequency=0
         custamount=0
         credit=0
-
         for index in customerorderamount:
             frequency+=1
             custamount=custamount+index.amount
-            
         credits=custamount//100
         if(frequency>=2):
             credit+=(frequency//2)

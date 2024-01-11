@@ -27,25 +27,13 @@ def getRoutes(request):
     return Response(routes)
 
 #monthly income attained
-@api_view(['POST'])
+@api_view(['GET'])
 def getmonthlySales(request):
-    selected_year=request.data['year']
-    data_list=orders.objects.all()
-    # serializer=OrderSerializer(data_list,many=True)
-    yearly_list=[]
-    for index in data_list:
-        print(index.orderDate.year)
-        if(index.orderDate.year==selected_year):
-            yearly_list.append(index)
-    serializer=OrderSerializer(yearly_list,many=True)
-    month_list={}
-    for index in yearly_list:
-        month=index.orderDate.strftime("%B")
-        if month_list.get(month) == None:
-            month_list[month]=index.amount
-        else:
-           month_list[month]+=index.amount 
-    return Response(month_list,status=status.HTTP_200_OK)
+    data_list = monthlyanalysis.objects.all()
+    serializer = MonthlySalesSerializer(data_list, many=True)
+    print(serializer.data)
+    return Response(serializer.data)
+
 
 #obtaing producttypewise sales
 @api_view(['GET'])

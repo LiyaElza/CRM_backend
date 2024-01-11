@@ -29,7 +29,7 @@ def getRoutes(request):
     return Response(routes)
 
 #fetching sales details of the organization
-@login_needed
+# @login_needed
 @api_view(['GET'])
 
 def getCounts(request):

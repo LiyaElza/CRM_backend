@@ -9,7 +9,7 @@ from rest_framework.exceptions import AuthenticationFailed
 from reportsapp.decorators import login_needed
 
 #adding and displaying support lists
-@login_needed
+# @login_needed
 @api_view(['GET','POST'])
 def getsupport(request):
 

@@ -37,10 +37,11 @@ def getproducts(request):
 #reading from csv files
 @api_view(['POST'])
 def Import_csv(request):
-    if request.method == 'POST' and request.FILES['file']:
+    file=request.GET.get("file","")
+    if request.method == 'POST' and file!="":
         fs=FileSystemStorage()
         filename=fs.save      
-        productexceldata = pd.read_excel(request.FILES['file'] )
+        productexceldata = pd.read_excel(file)
         dbframe = productexceldata
         for dbframe in dbframe.itertuples():
                  
@@ -50,4 +51,5 @@ def Import_csv(request):
                                                )
                
             obj.save()
-        return Response({'message':'File Added Successfully'})
+        return Response({'message':True},status=status.HTTP_201_CREATED)
+    return Response({'message':False},status=status.HTTP_400_BAD_REQUEST)
